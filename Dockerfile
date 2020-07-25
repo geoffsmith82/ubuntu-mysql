@@ -3,10 +3,9 @@ MAINTAINER leafney "babycoolzx@126.com"
 
 # RUN echo "deb http://cn.archive.ubuntu.com/ubuntu/ xenial main restricted universe multiverse" >> /etc/apt/sources.list
 
-RUN groupadd --gid 1000  -r mysql && useradd  --uid 1000 -r -g mysql mysql
-
-RUN echo "mysql-server mysql-server/root_password password root" | debconf-set-selections
-RUN echo "mysql-server mysql-server/root_password_again password root" | debconf-set-selections
+RUN groupadd --gid 1000  -r mysql && useradd  --uid 1000 -r -g mysql mysql && \
+    echo "mysql-server mysql-server/root_password password root" | debconf-set-selections && \
+    echo "mysql-server mysql-server/root_password_again password root" | debconf-set-selections
 
 RUN apt-get update && \
     apt-get -y upgrade && \
