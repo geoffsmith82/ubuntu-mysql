@@ -1,13 +1,13 @@
-FROM ubuntu:latest
+FROM ubuntu:20.04
 MAINTAINER leafney "babycoolzx@126.com"
 
-RUN echo "deb http://cn.archive.ubuntu.com/ubuntu/ xenial main restricted universe multiverse" >> /etc/apt/sources.list
+# RUN echo "deb http://cn.archive.ubuntu.com/ubuntu/ xenial main restricted universe multiverse" >> /etc/apt/sources.list
 
 RUN echo "mysql-server mysql-server/root_password password root" | debconf-set-selections
 RUN echo "mysql-server mysql-server/root_password_again password root" | debconf-set-selections
 
 RUN apt-get update && \
-	apt-get -y install mysql-server-5.7 && \
+	apt-get -y install mysql-server-8.0 && \
 	mkdir -p /var/lib/mysql && \
 	mkdir -p /var/run/mysqld && \
 	mkdir -p /var/log/mysql && \
