@@ -10,7 +10,7 @@ RUN echo "mysql-server mysql-server/root_password_again password root" | debconf
 
 RUN apt-get update && \
     apt-get -y upgrade && \
-	apt-get -y install mysql-server-8.0 && \
+	apt-get -y install mysql-server-8.0 apt-utils && \
 	mkdir -p /var/lib/mysql && \
 	mkdir -p /var/run/mysqld && \
 	mkdir -p /var/log/mysql && \
